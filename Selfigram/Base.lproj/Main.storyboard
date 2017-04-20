@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="6ks-4C-ic2">
             <objects>
-                <viewController id="ME6-gy-qwo" sceneMemberID="viewController">
+                <viewController id="ME6-gy-qwo" customClass="ProfileViewController" customModule="Selfigram" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nK4-cD-YDU"/>
                         <viewControllerLayoutGuide type="bottom" id="vpp-AA-kHs"/>
@@ -20,9 +20,48 @@
                     <view key="view" contentMode="scaleToFill" id="k4r-24-AXH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYN-Ku-JLj">
+                                <rect key="frame" x="148" y="333" width="79" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="lYZ-Ay-FfT">
+                                <rect key="frame" x="97.5" y="110" width="180" height="185"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="180" id="QdO-rc-bNH"/>
+                                    <constraint firstAttribute="height" constant="185" id="lD3-Q0-ccl"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oE-16-WAB">
+                                <rect key="frame" x="101" y="295" width="54" height="30"/>
+                                <state key="normal" title="Camera"/>
+                                <connections>
+                                    <action selector="cameraButtonPressed:" destination="ME6-gy-qwo" eventType="touchUpInside" id="Upe-LX-ZTb"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="AYN-Ku-JLj" firstAttribute="top" secondItem="lYZ-Ay-FfT" secondAttribute="bottom" constant="38" id="2MU-Nk-mWG"/>
+                            <constraint firstItem="AYN-Ku-JLj" firstAttribute="centerX" secondItem="lYZ-Ay-FfT" secondAttribute="centerX" id="372-Wd-emq"/>
+                            <constraint firstItem="AYN-Ku-JLj" firstAttribute="centerX" secondItem="k4r-24-AXH" secondAttribute="centerX" id="850-he-thr"/>
+                            <constraint firstItem="lYZ-Ay-FfT" firstAttribute="top" secondItem="nK4-cD-YDU" secondAttribute="bottom" constant="46" id="Ksr-qw-jmE"/>
+                            <constraint firstItem="lYZ-Ay-FfT" firstAttribute="leading" secondItem="3oE-16-WAB" secondAttribute="trailing" constant="-57.5" id="Ruy-0e-ahe"/>
+                            <constraint firstItem="AYN-Ku-JLj" firstAttribute="top" secondItem="lYZ-Ay-FfT" secondAttribute="bottom" constant="38" id="Xsn-Bh-Bxv"/>
+                            <constraint firstItem="lYZ-Ay-FfT" firstAttribute="centerX" secondItem="k4r-24-AXH" secondAttribute="centerX" id="a0N-A1-WYm"/>
+                            <constraint firstItem="3oE-16-WAB" firstAttribute="top" secondItem="lYZ-Ay-FfT" secondAttribute="bottom" id="sBv-iZ-sRn"/>
+                            <constraint firstItem="lYZ-Ay-FfT" firstAttribute="centerX" secondItem="k4r-24-AXH" secondAttribute="centerX" id="uez-QN-Msq"/>
+                            <constraint firstItem="AYN-Ku-JLj" firstAttribute="top" secondItem="3oE-16-WAB" secondAttribute="bottom" constant="8" id="uiR-Gt-Epw"/>
+                            <constraint firstItem="AYN-Ku-JLj" firstAttribute="top" secondItem="lYZ-Ay-FfT" secondAttribute="bottom" constant="38" id="vQq-kL-o0t"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uux-gD-pEA"/>
+                    <connections>
+                        <outlet property="profileimageview" destination="lYZ-Ay-FfT" id="fiu-Iw-2CX"/>
+                        <outlet property="usernameLabel" destination="AYN-Ku-JLj" id="g8Z-2t-weS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q5v-t5-IdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -165,8 +204,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Activities" width="16" height="16"/>
-        <image name="NewsFeed" width="16" height="16"/>
-        <image name="Profile" width="16" height="16"/>
+        <image name="Activities" width="25" height="25"/>
+        <image name="NewsFeed" width="25" height="25"/>
+        <image name="Profile" width="25" height="25"/>
+        <image name="placeholder" width="256" height="256"/>
     </resources>
 </document>
