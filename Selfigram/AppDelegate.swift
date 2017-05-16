@@ -7,16 +7,51 @@
 //
 
 import UIKit
+import Parse
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+        Post.registerSubclass()
+        Activity.registerSubclass()
+        
+        // Initialize Parse.
+        // Replace YOUR_APP_ID and URL_TO_YOUR_PARSE_SERVER with the values you chose when you installed your Parse server.
+        
+        let configuration = ParseClientConfiguration { clientConfiguration in
+            clientConfiguration.applicationId = "5CDeHX2xNhW11QZXr9AvtBbEQY0lft4jpUuMFt9g"
+            clientConfiguration.server = "https://parse-server-ios-main.herokuapp.com/parse"
+        }
+        
+        Parse.initialize(with: configuration)
+        
+        let user = PFUser()
+        let username = "Alec"
+        let password = "Campbell"
+        user.username = username
+        user.password = password
+        user.signUpInBackground(block: { (success, error) -> Void in
+            
+            if success {
+                print("successfully signuped a user")
+                
+            } else {
+                PFUser.logInWithUsername(inBackground: username, password: password, block: { (user, error) -> Void in
+                    
+                    if let user = user {
+                        print("successfully logged in \(user)")
+                        
+                    }
+                })
+            }
+        })
+        
         return true
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -39,8 +74,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        
     }
-
-
 }
-
